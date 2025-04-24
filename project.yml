@@ -1,0 +1,9 @@
+project:
+  name: coordinator
+  memory: 2048
+  health:
+    uri: /actuator/health
+  defaultPort: 8282
+  environment:
+    - name: spring_profiles_active
+      value: {{CLUSTER}}
