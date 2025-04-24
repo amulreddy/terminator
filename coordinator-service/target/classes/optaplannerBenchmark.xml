@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plannerBenchmark>
+	<warmUpSecondsSpentLimit>10</warmUpSecondsSpentLimit>
+	<benchmarkDirectory>/tmp</benchmarkDirectory>
+	<environmentMode>FAST_ASSERT</environmentMode>
+	<solverBenchmark>
+		<name>Late Acceptance Strongest Fit</name>
+		<solver>
+			<!-- Domain model configuration -->
+			<solutionClass>com.autowares.mongoose.optaplanner.domain.OrderDetailFulfillment
+			</solutionClass>
+			<entityClass>com.autowares.mongoose.optaplanner.domain.OrderFillDetail
+			</entityClass>
+
+			<!-- Score configuration -->
+			<scoreDirectorFactory>
+				<constraintProviderClass>com.autowares.mongoose.optaplanner.constraints.OrderConstraintProvider
+				</constraintProviderClass>
+			</scoreDirectorFactory>
+
+			<!-- Optimization algorithms configuration -->
+			<constructionHeuristic>
+				<constructionHeuristicType>STRONGEST_FIT</constructionHeuristicType>
+			</constructionHeuristic>
+			<localSearch>
+				<termination>
+					<terminationCompositionStyle>AND</terminationCompositionStyle>
+					<unimprovedMillisecondsSpentLimit>250
+					</unimprovedMillisecondsSpentLimit>
+				</termination>
+
+				<localSearchType>LATE_ACCEPTANCE</localSearchType>
+			</localSearch>
+		</solver>
+	</solverBenchmark>
+		<solverBenchmark>
+		<name>Late Acceptance First Fit</name>
+		<solver>
+			<!-- Domain model configuration -->
+			<solutionClass>com.autowares.mongoose.optaplanner.domain.OrderDetailFulfillment
+			</solutionClass>
+			<entityClass>com.autowares.mongoose.optaplanner.domain.OrderFillDetail
+			</entityClass>
+
+			<!-- Score configuration -->
+			<scoreDirectorFactory>
+				<constraintProviderClass>com.autowares.mongoose.optaplanner.constraints.OrderConstraintProvider
+				</constraintProviderClass>
+			</scoreDirectorFactory>
+
+			<!-- Optimization algorithms configuration -->
+			<constructionHeuristic>
+				<constructionHeuristicType>FIRST_FIT</constructionHeuristicType>
+			</constructionHeuristic>
+			<localSearch>
+				<termination>
+					<terminationCompositionStyle>AND</terminationCompositionStyle>
+					<unimprovedMillisecondsSpentLimit>250
+					</unimprovedMillisecondsSpentLimit>
+				</termination>
+
+				<localSearchType>LATE_ACCEPTANCE</localSearchType>
+			</localSearch>
+		</solver>
+	</solverBenchmark>
+	<solverBenchmark>
+		<name>Late Acceptance</name>
+		<solver>
+			<!-- Domain model configuration -->
+			<solutionClass>com.autowares.mongoose.optaplanner.domain.OrderDetailFulfillment
+			</solutionClass>
+			<entityClass>com.autowares.mongoose.optaplanner.domain.OrderFillDetail
+			</entityClass>
+
+			<!-- Score configuration -->
+			<scoreDirectorFactory>
+				<constraintProviderClass>com.autowares.mongoose.optaplanner.constraints.OrderConstraintProvider
+				</constraintProviderClass>
+			</scoreDirectorFactory>
+
+
+			<localSearch>
+				<termination>
+					<terminationCompositionStyle>AND</terminationCompositionStyle>
+					<unimprovedMillisecondsSpentLimit>250
+					</unimprovedMillisecondsSpentLimit>
+				</termination>
+
+				<localSearchType>LATE_ACCEPTANCE</localSearchType>
+			</localSearch>
+		</solver>
+	</solverBenchmark>
+
+	<solverBenchmark>
+		<name>Tabu Search</name>
+		<solver>
+			<!-- Domain model configuration -->
+			<solutionClass>com.autowares.mongoose.optaplanner.domain.OrderDetailFulfillment
+			</solutionClass>
+			<entityClass>com.autowares.mongoose.optaplanner.domain.OrderFillDetail
+			</entityClass>
+
+			<!-- Score configuration -->
+			<scoreDirectorFactory>
+				<constraintProviderClass>com.autowares.mongoose.optaplanner.constraints.OrderConstraintProvider
+				</constraintProviderClass>
+			</scoreDirectorFactory>
+
+			<!-- Optimization algorithms configuration -->
+			<constructionHeuristic>
+				<constructionHeuristicType>FIRST_FIT</constructionHeuristicType>
+			</constructionHeuristic>
+			<localSearch>
+				<termination>
+					<terminationCompositionStyle>AND</terminationCompositionStyle>
+					<unimprovedMillisecondsSpentLimit>250
+					</unimprovedMillisecondsSpentLimit>
+				</termination>
+
+				<localSearchType>TABU_SEARCH</localSearchType>
+			</localSearch>
+		</solver>
+	</solverBenchmark>
+	<solverBenchmark>
+		<name>Great Deluge Search</name>
+		<solver>
+			<!-- Domain model configuration -->
+			<solutionClass>com.autowares.mongoose.optaplanner.domain.OrderDetailFulfillment
+			</solutionClass>
+			<entityClass>com.autowares.mongoose.optaplanner.domain.OrderFillDetail
+			</entityClass>
+
+			<!-- Score configuration -->
+			<scoreDirectorFactory>
+				<constraintProviderClass>com.autowares.mongoose.optaplanner.constraints.OrderConstraintProvider
+				</constraintProviderClass>
+			</scoreDirectorFactory>
+
+			<!-- Optimization algorithms configuration -->
+			<constructionHeuristic>
+				<constructionHeuristicType>FIRST_FIT</constructionHeuristicType>
+			</constructionHeuristic>
+			<localSearch>
+				<termination>
+					<terminationCompositionStyle>AND</terminationCompositionStyle>
+					<unimprovedMillisecondsSpentLimit>250
+					</unimprovedMillisecondsSpentLimit>
+				</termination>
+
+				<localSearchType>GREAT_DELUGE</localSearchType>
+			</localSearch>
+		</solver>
+	</solverBenchmark>
+
+	<solverBenchmark>
+		<name>Default</name>
+		<solver>
+			<!-- Domain model configuration -->
+			<solutionClass>com.autowares.mongoose.optaplanner.domain.OrderDetailFulfillment
+			</solutionClass>
+			<entityClass>com.autowares.mongoose.optaplanner.domain.OrderFillDetail
+			</entityClass>
+
+			<!-- Score configuration -->
+			<scoreDirectorFactory>
+				<constraintProviderClass>com.autowares.mongoose.optaplanner.constraints.OrderConstraintProvider
+				</constraintProviderClass>
+			</scoreDirectorFactory>
+			<localSearch>
+				<termination>
+					<terminationCompositionStyle>AND</terminationCompositionStyle>
+					<unimprovedMillisecondsSpentLimit>250
+					</unimprovedMillisecondsSpentLimit>
+				</termination>
+			</localSearch>
+
+		</solver>
+	</solverBenchmark>
+
+	<solverBenchmark>
+		<name>Default First Fit</name>
+		<solver>
+			<!-- Domain model configuration -->
+			<solutionClass>com.autowares.mongoose.optaplanner.domain.OrderDetailFulfillment
+			</solutionClass>
+			<entityClass>com.autowares.mongoose.optaplanner.domain.OrderFillDetail
+			</entityClass>
+
+			<!-- Score configuration -->
+			<scoreDirectorFactory>
+				<constraintProviderClass>com.autowares.mongoose.optaplanner.constraints.OrderConstraintProvider
+				</constraintProviderClass>
+			</scoreDirectorFactory>
+			<constructionHeuristic>
+				<constructionHeuristicType>FIRST_FIT</constructionHeuristicType>
+			</constructionHeuristic>
+			<localSearch>
+				<termination>
+					<terminationCompositionStyle>AND</terminationCompositionStyle>
+					<unimprovedMillisecondsSpentLimit>250
+					</unimprovedMillisecondsSpentLimit>
+				</termination>
+			</localSearch>
+
+		</solver>
+	</solverBenchmark>
+
+	<solverBenchmark>
+		<name>Default Allocate</name>
+		<solver>
+			<!-- Domain model configuration -->
+			<solutionClass>com.autowares.mongoose.optaplanner.domain.OrderDetailFulfillment
+			</solutionClass>
+			<entityClass>com.autowares.mongoose.optaplanner.domain.OrderFillDetail
+			</entityClass>
+
+			<!-- Score configuration -->
+			<scoreDirectorFactory>
+				<constraintProviderClass>com.autowares.mongoose.optaplanner.constraints.OrderConstraintProvider
+				</constraintProviderClass>
+			</scoreDirectorFactory>
+			<constructionHeuristic>
+				<constructionHeuristicType>ALLOCATE_FROM_POOL
+				</constructionHeuristicType>
+			</constructionHeuristic>
+			<localSearch>
+				<termination>
+					<terminationCompositionStyle>AND</terminationCompositionStyle>
+					<unimprovedMillisecondsSpentLimit>250
+					</unimprovedMillisecondsSpentLimit>
+				</termination>
+			</localSearch>
+
+		</solver>
+	</solverBenchmark>
+
+	<solverBenchmark>
+		<name>Default Cheapest</name>
+		<solver>
+			<!-- Domain model configuration -->
+			<solutionClass>com.autowares.mongoose.optaplanner.domain.OrderDetailFulfillment
+			</solutionClass>
+			<entityClass>com.autowares.mongoose.optaplanner.domain.OrderFillDetail
+			</entityClass>
+
+			<!-- Score configuration -->
+			<scoreDirectorFactory>
+				<constraintProviderClass>com.autowares.mongoose.optaplanner.constraints.OrderConstraintProvider
+				</constraintProviderClass>
+			</scoreDirectorFactory>
+			<constructionHeuristic>
+				<constructionHeuristicType>CHEAPEST_INSERTION
+				</constructionHeuristicType>
+			</constructionHeuristic>
+			<localSearch>
+				<termination>
+					<terminationCompositionStyle>AND</terminationCompositionStyle>
+					<unimprovedMillisecondsSpentLimit>250
+					</unimprovedMillisecondsSpentLimit>
+				</termination>
+			</localSearch>
+
+		</solver>
+	</solverBenchmark>
+
+	<solverBenchmark>
+		<name>Default Strongest</name>
+		<solver>
+			<!-- Domain model configuration -->
+			<solutionClass>com.autowares.mongoose.optaplanner.domain.OrderDetailFulfillment
+			</solutionClass>
+			<entityClass>com.autowares.mongoose.optaplanner.domain.OrderFillDetail
+			</entityClass>
+
+			<!-- Score configuration -->
+			<scoreDirectorFactory>
+				<constraintProviderClass>com.autowares.mongoose.optaplanner.constraints.OrderConstraintProvider
+				</constraintProviderClass>
+			</scoreDirectorFactory>
+			<constructionHeuristic>
+				<constructionHeuristicType>STRONGEST_FIT
+				</constructionHeuristicType>
+			</constructionHeuristic>
+			<localSearch>
+				<termination>
+					<terminationCompositionStyle>AND</terminationCompositionStyle>
+					<unimprovedMillisecondsSpentLimit>250
+					</unimprovedMillisecondsSpentLimit>
+				</termination>
+			</localSearch>
+
+		</solver>
+	</solverBenchmark>
+
+	<solverBenchmark>
+		<name>Default Weakest</name>
+		<solver>
+			<!-- Domain model configuration -->
+			<solutionClass>com.autowares.mongoose.optaplanner.domain.OrderDetailFulfillment
+			</solutionClass>
+			<entityClass>com.autowares.mongoose.optaplanner.domain.OrderFillDetail
+			</entityClass>
+
+			<!-- Score configuration -->
+			<scoreDirectorFactory>
+				<constraintProviderClass>com.autowares.mongoose.optaplanner.constraints.OrderConstraintProvider
+				</constraintProviderClass>
+			</scoreDirectorFactory>
+			<constructionHeuristic>
+				<constructionHeuristicType>WEAKEST_FIT
+				</constructionHeuristicType>
+			</constructionHeuristic>
+			<localSearch>
+				<termination>
+					<terminationCompositionStyle>AND</terminationCompositionStyle>
+					<unimprovedMillisecondsSpentLimit>250
+					</unimprovedMillisecondsSpentLimit>
+				</termination>
+			</localSearch>
+
+		</solver>
+	</solverBenchmark>
+
+
+
+</plannerBenchmark>

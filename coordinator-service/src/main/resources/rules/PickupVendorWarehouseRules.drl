@@ -1,0 +1,19 @@
+import com.autowares.mongoose.model.OrderContext;
+import com.autowares.mongoose.model.OrderDetailContext;
+import com.autowares.mongoose.model.criteria.PkCriteria;
+import com.autowares.servicescommon.model.ServiceClass;
+dialect 'mvel'
+
+rule "Fulfillment location moved to end of list based on configured vendor and Standard ServiceClass"
+when
+	$order : OrderContext(serviceClass == ServiceClass.Standard);
+	$criteria : PkCriteria();
+	$orderDetail : OrderDetailContext(getVendorCode() == $criteria.vendorCode);
+then
+     System.out.println( "PK vendor found");
+end
+
+rule "For Standard service class orders : Do NOT fill from a location where the vendor is PK if fulfillment time is NOT impacted."
+when
+then
+end

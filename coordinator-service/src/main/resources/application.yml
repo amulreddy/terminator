@@ -1,0 +1,141 @@
+server:
+  port: 8282
+enabledCustomers: '.*'
+  
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*,hawtio,jolokia'
+    enabled-by-default: true
+  endpoint:
+    health:
+      show-details:  always
+    beans:
+      show-details: always
+  health:
+    elasticsearch:
+      enabled: false
+    rabbit:
+      enabled: false
+  rabbitmq:
+    addresses: rabbitmq.service.consul
+  jpa:
+    hibernate:
+      ddl-auto: none
+hibernate:
+  enable_lazy_load_no_trans: true
+hawtio:
+  authenticationEnabled: false
+
+autowares:
+  password: e30.eyJ1cm46anNvbjpzZWN1cml0eTpyb2xlcyI6W10sImV4cCI6MzE1MzYwMDAwMCwiaXNzIjoiY2F0YWxvZ3NlcnZpY2UiLCJhdWQiOiJkb2MiLCJpYXQiOiIxNDM1OTMyNTgwNzUxIn0.fIXcXc3j9lGiv5H6XVZQ8xhnQGnFYVncLGPQja9fdJI
+  servicediscovery:
+    domain: testconsul
+motorstate:
+  apiurl: https://api-test.motorstate.com/
+  apikey: cf05a84b-1851-4227-a4e0-844248f0cf67
+yooz:
+  apiurl: https://uspreproduction1.getyooz.com
+  applicationId: e829308f-5638-4fc9-9d51-1a2a30c73f99
+  clientId: yooz-stats
+  password: RisingYoozAutowares2024!
+  userName: Autowares.IT@noemail.dsbl
+orderServiceDomain: consul
+callLogistix: true
+gatewayOrdersQueue: file://orders
+mongooseEventsQueue: stub://mongooseEvents # file://events
+mongooseWmsEventsQueue: file://wmsEvents
+mongooseCoordinatorDashQueue: file://dashEvents
+testGatewayOrdersQueue: stub://testGatewayOrderEvents
+ediDocumentSource: file://edi
+SPSCommerceFtp: "ftp://ftp.staging.gcommerceinc.com/Outbound?username=autowares.com&password=B8YPezq&delete=true&passiveMode=true&streamDownload=true&stepwise=false"
+ediDocumentArchive: "ftp://viper-test.autowares.com/../../usr5/tmp/Mongoose2?username=jenkins&password=feiSh4&delete=true&passiveMode=true&streamDownload=true&stepwise=false"
+YoozFtp: stub://yooz
+
+springdoc:
+  swagger-ui.path: /
+
+camel:
+  springboot:
+    use-mdc-logging: true
+  health:
+    consumersEnabled: false
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+  rabbitmq:
+    addresses: rabbitmq.service.consul
+  jmx:
+    enabled: true
+autowares:
+  servicediscovery:
+    domain: testconsul
+callLogistix: true
+orderServiceDomain: consul
+gatewayOrdersQueue: rabbitmq://rabbitmq.service.consul:5672/awi.events?autoAck=false&routingKey=wms.gateway&durable=false&exchangeType=topic&queue=mongooseGatewayOrdersQueueTest&autoDelete=false&concurrentConsumers=10&prefetchCount=1&prefetchSize=1&prefetchGlobal=false
+mongooseEventsQueue: stub://mongooseEvents #rabbitmq://rabbitmq.service.testconsul:5672/awi.events?routingKey=wms.mongoose&durable=false&exchangeType=topic&queue=mongooseCoordinatorEventQueueTest&autoDelete=false
+mongooseWmsEventsQueue: "rabbitmq://rabbitmq.service.consul:5672/awi.events?routingKey=wms.#&durable=false&exchangeType=topic&queue=mongooseCoordinatorWmsQueueTest&autoDelete=false&concurrentConsumers=15"
+mongooseCoordinatorDashQueue: "rabbitmq://rabbitmq.service.consul:5672/awi.events?routingKey=dash.#&durable=false&exchangeType=topic&queue=mongooseCoordinatorDashQueueTest&autoDelete=false&concurrentConsumers=5"
+
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+ediDocumentSource: "file:edi"
+SPSCommerceFtp: "stub:spscommerce.stub"
+ediDocumentArchive: "file:ediDocumentArchive"
+YoozFtp: direct:yoozApi
+
+---
+spring:
+  config:
+    activate:
+      on-profile: test
+  rabbitmq:
+    addresses: rabbitmq.service.testconsul
+autowares:
+  servicediscovery:
+    domain: testconsul
+orderServiceDomain: consul
+gatewayOrdersQueue: rabbitmq://rabbitmq.service.consul:5672/awi.events?autoAck=false&routingKey=wms.gateway&durable=false&exchangeType=topic&queue=mongooseGatewayOrdersQueueTest&autoDelete=false&concurrentConsumers=10&prefetchCount=1&prefetchSize=1&prefetchGlobal=false
+mongooseEventsQueue: stub://mongooseEvents #rabbitmq://rabbitmq.service.testconsul:5672/awi.events?routingKey=wms.mongoose&durable=false&exchangeType=topic&queue=mongooseCoordinatorEventQueueTest&autoDelete=false
+mongooseWmsEventsQueue: "rabbitmq://rabbitmq.service.consul:5672/awi.events?routingKey=wms.#&durable=false&exchangeType=topic&queue=mongooseCoordinatorWmsQueueTest&autoDelete=false&concurrentConsumers=5"
+mongooseCoordinatorDashQueue: "rabbitmq://rabbitmq.service.consul:5672/awi.events?routingKey=dash.#&durable=false&exchangeType=topic&queue=mongooseCoordinatorDashQueueTest&autoDelete=false&concurrentConsumers=15"
+testGatewayOrdersQueue: "rabbitmq://rabbitmq.service.testconsul:5672/awi.events?routingKey=wms.gateway&durable=false&exchangeType=topic&queue=mongooseGatewayOrdersQueue&autoDelete=false&concurrentConsumers=5"
+ediDocumentSource: "stub://ediDocumentSource"
+
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+  rabbitmq:
+    addresses: rabbitmq.service.consul
+autowares:
+  servicediscovery:
+    domain: consul
+motorstate:
+  apiurl: https://api.motorstate.com/
+  apikey: 172a9fd5-376a-461d-84cb-7e854ea9700b
+yooz:
+  apiurl: https://us1.getyooz.com
+  applicationId: e829308f-5638-4fc9-9d51-1a2a30c73f93
+  clientId: yooz-public-api
+  password: RisingYoozAutowares2024!
+  userName: Autowares.IT@noemail.dsbl
+orderServiceDomain: consul
+gatewayOrdersQueue: rabbitmq://rabbitmq.service.consul:5672/awi.events?autoAck=false&routingKey=wms.gateway&durable=false&exchangeType=topic&queue=mongooseGatewayOrdersQueue&autoDelete=false&concurrentConsumers=10&prefetchCount=1&prefetchSize=1&prefetchGlobal=false
+mongooseEventsQueue: stub://mongooseEvents #rabbitmq://rabbitmq.service.consul:5672/awi.events?routingKey=wms.mongoose&durable=false&exchangeType=topic&queue=mongooseCoordinatorEventQueue&autoDelete=false
+mongooseWmsEventsQueue: "rabbitmq://rabbitmq.service.consul:5672/awi.events?routingKey=wms.#&durable=false&exchangeType=topic&queue=mongooseCoordinatorWmsQueue&autoDelete=false&concurrentConsumers=15"
+mongooseCoordinatorDashQueue: "rabbitmq://rabbitmq.service.consul:5672/awi.events?routingKey=dash.#&durable=false&exchangeType=topic&queue=mongooseCoordinatorDashQueue&autoDelete=false&concurrentConsumers=5"
+ediDocumentSource: "ftp://viper.autowares.com/../../usr5/tmp/Mongoosetmp?username=jenkins&password=feiSh4&delete=true&passiveMode=true&streamDownload=true&stepwise=false"
+SPSCommerceFtp: "ftp://ftp2.gcommerceinc.com/Outbound?username=autowares.com&password=B8YPezq&delete=true&passiveMode=true&streamDownload=true&stepwise=false"
+ediDocumentArchive: "ftp://viper.autowares.com/../../usr5/tmp/Mongoose2?username=jenkins&password=feiSh4&delete=true&passiveMode=true&streamDownload=true&stepwise=false"
+YoozFtp: direct:yoozApi
+#enabledCustomers: '\d{0,2} 1\d{0,2} 2\d{0,2} 3\d{0,2} 4\d{0,2} 5\d{0,2} 6\d{0,2} 7\d{0,2} 8\d{0,2} 9\d{0,2} 1171'
+  

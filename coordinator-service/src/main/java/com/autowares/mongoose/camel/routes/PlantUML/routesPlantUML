@@ -1,0 +1,924 @@
+@startuml
+
+skinparam ArrowColor #Black
+
+skinparam rectangle {
+  RoundCorner 20
+}
+
+skinparam rectangle<<route>> {
+  BorderColor #6C8EBF
+  BackgroundColor #DAE8FC
+}
+
+skinparam queue<<endpoint>> {
+}
+
+skinparam queue<<static>> {
+  BorderColor #B85450
+  BackgroundColor #F8CECC
+}
+
+skinparam queue<<dynamic>> {
+  BorderColor #82B366
+  BackgroundColor #D5E8D4
+}
+
+footer Generated with camel-plantuml on %date("dd-MM-yyyy HH:mm")
+
+' === Some useful settings for tweaking diagram layout ===
+'left to right direction
+'hide stereotype
+'skinparam nodesep 50
+'skinparam ranksep 50
+'skinparam wrapWidth 250
+
+rectangle route_59b588c76d893f7e975cf35c4bb4e6da <<route>> as "
+Combo: dropShipProcessing
+"
+
+rectangle route_745588f1323a4119f95da3363a39802d <<route>> as "
+UpdateMyPlace
+"
+
+rectangle route_ba8f3d67b637e40adf865c2da178f76b <<route>> as "
+Combo: lockedProcessing
+"
+
+rectangle route_9f5b1e298aa3ffa223ed6b8d939196bd <<route>> as "
+Input: api
+"
+
+rectangle route_8e8fc4532f79ebc62b842390d582bca4 <<route>> as "
+Viper PK Files
+"
+
+rectangle route_a9c1010a57ff35a73ca41eff1d42c5e3 <<route>> as "
+WMS: processWmsEvent
+"
+
+rectangle route_7cb9a567122d854c8f244538f8fbb129 <<route>> as "
+Common: storePartLookup
+"
+
+rectangle route_7c274f1486a045210cae7dd990c4b05c <<route>> as "
+Input: generate-invoice
+"
+
+rectangle route_546e87b50867ad09814809c227bf2521 <<route>> as "
+Common: saveCustomerSourceDocument
+"
+
+rectangle route_f6528a0cf9bb109db1cf8f0f7d036567 <<route>> as "
+myPlaceDeliveryIntegration
+"
+
+rectangle route_6e7da17886e65a737beb81d4f5f817e1 <<route>> as "
+Common: saveSupplierSourceDocument
+"
+
+rectangle route_3e8135fbb875679f09ccc928520320e9 <<route>> as "
+Input: unprocessedDocuments
+"
+
+rectangle route_3dfb0010103d55df4bc22dd32220bee1 <<route>> as "
+sendMotorstateLivePO
+"
+
+rectangle route_1dccf8387d12b0e314981807740d64aa <<route>> as "
+Common: physicalLookup
+"
+
+rectangle route_ff1c868602881c1fcca9886ece16434a <<route>> as "
+Common: fulfillmentPlanning
+"
+
+rectangle route_07d97c8c6d82c731b40dd523737e5124 <<route>> as "
+WMS: mongooseToViperIntegration
+"
+
+rectangle route_3947ec4b3811796b744218772b1bce95 <<route>> as "
+Operational: warehouseOrderProcessing
+"
+
+rectangle route_4eab07afe4fd600cbddb625d9bfaf499 <<route>> as "
+Combo: Data processing - Phase 2
+"
+
+rectangle route_9ffd541b8ecff7971a4f78cbf6e8588e <<route>> as "
+Common: findReferenceDocuments
+"
+
+rectangle route_021cde70f3e272b0777a1a3b8cb4bb95 <<route>> as "
+Input: unprocessedOrders
+"
+
+rectangle route_e4fe72b82efd5739ae7b1e13b6c73a24 <<route>> as "
+quartz://unprocessedOrders
+"
+
+rectangle route_390c3185e8487708828de056a681f9b4 <<route>> as "
+WMS: transfer
+"
+
+rectangle route_3f37c41571a9c955f4463686b7a33d2c <<route>> as "
+Input: saveInitialQuote
+"
+
+rectangle route_307f0b16180b95eb265eebd7d22f1a92 <<route>> as "
+Common: lookup
+"
+
+rectangle route_fd020b2ccb143fb1949a3df5f52565e7 <<route>> as "
+Combo: saveShortage
+"
+
+rectangle route_e87124ef65ed6c69c833c7fd9b257646 <<route>> as "
+Error: stopOrderProcessing
+"
+
+rectangle route_fb49e61f1c649d8b19d2b9fbc0d01695 <<route>> as "
+Input: eventProcessing
+"
+
+rectangle route_f56b85fb447cb6688eb93ea4716f9d2a <<route>> as "
+Operational: motorstateProcessing
+"
+
+rectangle route_f29044685192b1a0027938d1337b1241 <<route>> as "
+Input: tempSaveSupplierDocument
+"
+
+rectangle route_7218d646af2620424310bcb7dd65da8a <<route>> as "
+Input: inquiry
+"
+
+rectangle route_c8c6d55303ae1a4cb2d30a23c22eb498 <<route>> as "
+WMS: subContextProcessing
+"
+
+rectangle route_f3f2ec337919f808fd4c59bda1e9a3bd <<route>> as "
+Input: processQuote
+"
+
+rectangle route_24ae7f44bfb28723d464fd30e5e482d9 <<route>> as "
+Common: customerLookup
+"
+
+rectangle route_942eeb442d3b9d7adff650dca7132a42 <<route>> as "
+WMS: saveWmsCoreRequest
+"
+
+rectangle route_2b9e46057823f17dcc656278b4f6a191 <<route>> as "
+Common: customerNotification
+"
+
+rectangle route_af68104f8e97271c7d14f1b2dfda7b40 <<route>> as "
+Dash: mongooseCoordinatorDashQueue
+"
+
+rectangle route_fd9a65867ad5a8630755a66e395cac73 <<route>> as "
+WMS: mongooseWmsEventsQueue
+"
+
+rectangle route_c4ccfaa47eada53b810983f8eeeee071 <<route>> as "
+Combo: saveExternalSupplierQuote
+"
+
+rectangle route_7407c4864d3377bf5f70e2fb7a7de481 <<route>> as "
+Common: shipmentProcessing
+"
+
+rectangle route_e395004a37321c8f2227547f8a0dea23 <<route>> as "
+Combo: Data lookup - Phase 1
+"
+
+rectangle route_58feb0d50a2b86dcf2a0ce5cb61ce409 <<route>> as "
+Input: ediInput
+"
+
+rectangle route_32e9db419106bf951e922be8cae40b44 <<route>> as "
+Input: zeroinvoice
+"
+
+rectangle route_1dc1eab06be6bbf5afc2761815956972 <<route>> as "
+WMS: mongooseEventsQueue
+"
+
+rectangle route_314e25e17e05cd60da8bff2748d697f1 <<route>> as "
+quartz://unprocessedDocuments
+"
+
+rectangle route_b8388ccbae4dd12a8bef2cf2cf16395a <<route>> as "
+Input: cancel
+"
+
+rectangle route_e62a8b506625bf0aa0ea8a42b843747b <<route>> as "
+Common: partyConfigurationLookup
+"
+
+rectangle route_19977bab271fd867ca3a0048c4eeea55 <<route>> as "
+ediFtp
+"
+
+rectangle route_fe09b1cadb84632404bde4c4b9a0c3dc <<route>> as "
+Input: gatewayOrdersQueue
+"
+
+rectangle route_e4757c463a0057a33e4570e94383eb00 <<route>> as "
+Combo: saveExternalSupplier
+"
+
+rectangle route_945f4481dac06290dcc1f44ac637ce88 <<route>> as "
+Common: toExternalSupplierOrder
+"
+
+rectangle route_106127a33e57eef8f5cde7218b9555b0 <<route>> as "
+Error: retrylater
+"
+
+rectangle route_5f6c5a1d04c5821083ad1dbb2e5170ac <<route>> as "
+orderValidation
+"
+
+rectangle route_38142b8017b16df99bf7c8bc609e9e48 <<route>> as "
+Common: warehouseMasterLookup
+"
+
+rectangle route_db4592cb7fc0b2341da6fd37a5bc5ca3 <<route>> as "
+Input: tempQuotePendingBlock
+"
+
+rectangle route_827e5d67a93f37a5d315258ed683eb13 <<route>> as "
+ediSPSCommerce
+"
+
+rectangle route_e7a9fd1e7179d3d7e2033c272b02d404 <<route>> as "
+Input: testGatewayOrdersQueue
+"
+
+rectangle route_fe99f323cd1d055c3bfd36ef07101990 <<route>> as "
+WMS: orderUpdateRoute
+"
+
+rectangle route_793202eaceb7676a7c35ff0dadb2891b <<route>> as "
+quartz://zeroInvoiceProcessing
+"
+
+rectangle route_0a71cdd5d5e1060e98872b43c65791d6 <<route>> as "
+Operational: packslipProcessing
+"
+
+rectangle route_2c48246cc044333bb46d1b3e6aa67e8b <<route>> as "
+Viper GCom Files
+"
+
+rectangle route_3f3d4f52491b0286146faa53704b2ae3 <<route>> as "
+Combo: Data persistence - Phase 3
+"
+
+rectangle route_f2adf6f219aaefd3ecd769b209def46e <<route>> as "
+WMS: scanned
+"
+
+rectangle route_23217a82be8f43204a3e112179096725 <<route>> as "
+Operational: warehousePersistence
+"
+
+rectangle route_83610b04f622dc9ed7680dc265db3f85 <<route>> as "
+Combo: gatewayOrderProcessing
+"
+
+rectangle route_6aed88d16bd11287248ec992cb278e96 <<route>> as "
+Input: basicRouteTest
+"
+
+rectangle route_57a541bd4a955753e520e8663aef42df <<route>> as "
+Common: partLookupProcessor
+"
+
+rectangle route_8ffb09d9d0145b378ea57016ba188cb3 <<route>> as "
+Common: storePartLookupProcessor
+"
+
+rectangle route_6707ff615521f6d073c33badeeeb21a4 <<route>> as "
+Error: stop
+"
+
+rectangle route_1bb34f27975bc154c52db3584d276735 <<route>> as "
+WMS: jobUpdate
+"
+
+rectangle route_dfaf29779dbc1ae4717bbd20486b0307 <<route>> as "
+WMS: mongooseOperationalEventProcessing
+"
+
+queue endpoint_6c80f38cc1a05b149eefc9cf4142b57c <<endpoint>><<static>> as "
+file://orders
+"
+
+queue endpoint_365793d27b9b2690e8ce010550e25538 <<endpoint>><<static>> as "
+file://edi
+"
+
+queue endpoint_1488d052d443a6b4de7be723e7bd1e1a <<endpoint>><<static>> as "
+seda://myPlaceDeliveryIntegration
+"
+
+queue endpoint_a0d1c92b545e73211df3b296c4d16190 <<endpoint>><<static>> as "
+direct://storePartLookup
+"
+
+queue endpoint_0993154a4bb837368a002dfb943c61ce <<endpoint>><<static>> as "
+direct://eventProcessing
+"
+
+queue endpoint_2033f424f20b0df03dae0290181d0990 <<endpoint>><<static>> as "
+direct://basicRouteTest
+"
+
+queue endpoint_c2664ef6fbcbfa00a7ba3104b4810ee6 <<endpoint>><<static>> as "
+stub://testGatewayOrderEvents
+"
+
+queue endpoint_55b7b631fe8c64921048d52c0aa438e5 <<endpoint>><<static>> as "
+direct://tempQuotePendingBlock
+"
+
+queue endpoint_e49f65d1c1a2d117588816654ea4d402 <<endpoint>><<static>> as "
+direct://warehouseMasterLookup
+"
+
+queue endpoint_b90f5b075b622271d7f08557cdf1b12e <<endpoint>><<static>> as "
+ftp://viper.autowares.com/../../usr1/datafiles
+"
+
+queue endpoint_20fac5d9f6ebf31503d2fd2d1d6a4750 <<endpoint>><<static>> as "
+direct://phase2
+"
+
+queue endpoint_9048eaa6a7bc2f2ba55751be1d8f8c02 <<endpoint>><<static>> as "
+direct://phase3
+"
+
+queue endpoint_f6eea9cafd92f91beb31c57af090c0e9 <<endpoint>><<static>> as "
+direct://stop
+"
+
+queue endpoint_4c4bcdf6d99d3558b6f9a10f500301bd <<endpoint>><<static>> as "
+direct://gatewayOrderProcessing
+"
+
+queue endpoint_0f2090b199deacf71ef011a14c158d82 <<endpoint>><<static>> as "
+direct://api
+"
+
+queue endpoint_f7fa3ce406a9ca3106c0cf04ed4cef5f <<endpoint>><<static>> as "
+file://events
+"
+
+queue endpoint_4e52422f76752187da3a891fff32c8c5 <<endpoint>><<static>> as "
+seda://saveSupplierSourceDocument
+"
+
+queue endpoint_72b366233c6f4d3bfe813995333a68a3 <<endpoint>><<static>> as "
+direct://phase1
+"
+
+queue endpoint_f54c31de7881aa9a828e739394118e82 <<endpoint>><<static>> as "
+direct://retrylater
+"
+
+queue endpoint_f05e3e3c7d17a988da1489a4ff49b900 <<endpoint>><<static>> as "
+direct://saveCustomerSourceDocument
+"
+
+queue endpoint_2fa42865eabd2779e3311251291565dd <<endpoint>><<static>> as "
+direct://cancel
+"
+
+queue endpoint_e4fe72b82efd5739ae7b1e13b6c73a24 <<endpoint>><<static>> as "
+quartz://unprocessedOrders
+"
+
+queue endpoint_b0357e037288b350e16d176300009c44 <<endpoint>><<static>> as "
+direct://saveExternalSupplierQuote
+"
+
+queue endpoint_b8f599cfef9c0ad475509fe5b21cfbdd <<endpoint>><<static>> as "
+direct://processWmsEvent
+"
+
+queue endpoint_be0ab7c9e14729d09469c65286a49659 <<endpoint>><<static>> as "
+file://output
+"
+
+queue endpoint_1f11665bed9403206b6f337fa2d72aba <<endpoint>><<static>> as "
+direct://orderUpdateRoute
+"
+
+queue endpoint_fffa5e2108684ffa7316e1942feec703 <<endpoint>><<static>> as "
+direct://customerNotification
+"
+
+queue endpoint_b14f343e17e155f8b8ee9b2a996e88ea <<endpoint>><<static>> as "
+seda://mongooseToViperIntegration
+"
+
+queue endpoint_6442b864ffcf84ab6f9db265738c0d1a <<endpoint>><<static>> as "
+direct://partLookupProcessor
+"
+
+queue endpoint_8b242999ad23ebe51807273b5dff866a <<endpoint>><<static>> as "
+direct://transfer
+"
+
+queue endpoint_f201263747fe28fa261bf8cf4433723e <<endpoint>><<static>> as "
+direct://physicalLookup
+"
+
+queue endpoint_3b233c1e511ce99547a1aadc5c15088f <<endpoint>><<static>> as "
+ftp://ftp.staging.gcommerceinc.com/Outbound
+"
+
+queue endpoint_b726e9bba2520e0fbb1d37dec6aa1fdf <<endpoint>><<static>> as "
+direct://processQuote
+"
+
+queue endpoint_62e0a6ada08f3c7d9eec6e3a42a20bba <<endpoint>><<static>> as "
+direct://warehousePersistence
+"
+
+queue endpoint_a466d7385804fe6615379e53492cdc74 <<endpoint>><<static>> as "
+file://out
+"
+
+queue endpoint_767394a4d0282317b2fea53fe8d96e5c <<endpoint>><<static>> as "
+seda://mongooseOperationalEventProcessing
+"
+
+queue endpoint_30aaf9d4b90d2e19b7f79a2f2d29c4df <<endpoint>><<static>> as "
+seda://jobUpdate
+"
+
+queue endpoint_6d06275d12e0b0d02eed878ee116921b <<endpoint>><<static>> as "
+direct://lookup
+"
+
+queue endpoint_a972b086c7b3403ca56acf93b3c547be <<endpoint>><<static>> as "
+direct://ediInput
+"
+
+queue endpoint_9156e68859543829f9e8db3b0277d0a4 <<endpoint>><<static>> as "
+direct://retryLater
+"
+
+queue endpoint_b9c2e4df258b0e5e62781695d5377baf <<endpoint>><<static>> as "
+direct://lockedProcessing
+"
+
+queue endpoint_55ce83167e13cb9bc1521e1aeb52ea9c <<endpoint>><<static>> as "
+direct://dropShipProcessing
+"
+
+queue endpoint_314e25e17e05cd60da8bff2748d697f1 <<endpoint>><<static>> as "
+quartz://unprocessedDocuments
+"
+
+queue endpoint_b08815d918f441c938322d2261e29e2a <<endpoint>><<static>> as "
+direct://saveExternalSupplier
+"
+
+queue endpoint_9e2982095eb15f51861ae913400ff69c <<endpoint>><<static>> as "
+ftp://viper-test.autowares.com/../../usr5/tmp/Mongoose2
+"
+
+queue endpoint_4b2ef9c82df8f6969f4bebda9625081b <<endpoint>><<static>> as "
+direct://ediFtp
+"
+
+queue endpoint_056fb1a05132658d16e9b503fba4f480 <<endpoint>><<static>> as "
+direct://shipmentProcessing
+"
+
+queue endpoint_69479c8df956a73d499cd9b7661d4777 <<endpoint>><<static>> as "
+direct://subContextProcessing
+"
+
+queue endpoint_4269af557aa912a9a7976383d1f412bf <<endpoint>><<static>> as "
+file://wmsEvents
+"
+
+queue endpoint_24aa36a342d8f50606106db5bf31d52e <<endpoint>><<static>> as "
+seda://storePartLookupProcessor
+"
+
+queue endpoint_e88ec68581eb3f3b2a1813035f7ba4a2 <<endpoint>><<static>> as "
+direct://saveInitialQuote
+"
+
+queue endpoint_a96edba18759482884d68527c7d97542 <<endpoint>><<static>> as "
+direct://customerLookup
+"
+
+queue endpoint_b7aeb37ce54a3f1ffb967c39ec72556c <<endpoint>><<static>> as "
+direct://fulfillmentPlanning
+"
+
+queue endpoint_cb7d7b0d13504fdca5dd7dc17966dc72 <<endpoint>><<static>> as "
+direct://toExternalSupplierOrder
+"
+
+queue endpoint_793202eaceb7676a7c35ff0dadb2891b <<endpoint>><<static>> as "
+quartz://zeroInvoiceProcessing
+"
+
+queue endpoint_9568bcbb1d59b31b63eaa9b926815c00 <<endpoint>><<static>> as "
+direct://unprocessedOrders
+"
+
+queue endpoint_2637d7c7b8d5a6e4e3b63f8775c66527 <<endpoint>><<static>> as "
+seda://UpdateMyPlace
+"
+
+queue endpoint_d044bc50abad329442a82b3a7d8d84bf <<endpoint>><<static>> as "
+direct://zeroinvoice
+"
+
+queue endpoint_49cca804a61a5e547cea2e24c03e62fa <<endpoint>><<static>> as "
+direct://packslipProcessing
+"
+
+queue endpoint_dce15794ad920c576c3b85ace2468476 <<endpoint>><<static>> as "
+direct://sendMotorstateLivePO
+"
+
+queue endpoint_57a57ee206358dc65f653f81da8259a4 <<endpoint>><<static>> as "
+stub://dashEvents
+"
+
+queue endpoint_f9942d7236a76a1065309e575b18393e <<endpoint>><<static>> as "
+seda://saveWmsCoreRequest
+"
+
+queue endpoint_bb67337f15d93a9860294bf5a84b15b4 <<endpoint>><<static>> as "
+seda://orderValidation
+"
+
+queue endpoint_c2eb9bab3db8dc0333c68dac53ee56b9 <<endpoint>><<static>> as "
+direct://findReferenceDocuments
+"
+
+queue endpoint_7ca19ad6b067c5ad055a27f63c2b392f <<endpoint>><<static>> as "
+direct://partyConfigurationLookup
+"
+
+queue endpoint_11d282fbfe0bb64ac5f9d9609399416a <<endpoint>><<static>> as "
+direct://tempSaveSupplierDocument
+"
+
+queue endpoint_edc859f75912023d96a9024e12e9c326 <<endpoint>><<static>> as "
+direct://motorstateProcessing
+"
+
+queue endpoint_ce764b980edf062d833d24caa56e2090 <<endpoint>><<static>> as "
+seda://scanned
+"
+
+queue endpoint_70c72afdad93c63acc74d4280172c9d3 <<endpoint>><<static>> as "
+direct://warehouseOrderProcessing
+"
+
+queue endpoint_5e9c31e8b224871497cebf63cf7b9ad1 <<endpoint>><<static>> as "
+direct://inquiry
+"
+
+queue endpoint_d9614dd38f9f479dc9ff9533f044f625 <<endpoint>><<static>> as "
+seda://saveShortage
+"
+
+queue endpoint_554e3cbf862643626cb92ff43b6fb5f1 <<endpoint>><<static>> as "
+direct://stopOrderProcessing
+"
+
+queue endpoint_0794576c41428e8996015a24f75e52c7 <<endpoint>><<static>> as "
+direct://generate-invoice
+"
+
+queue endpoint_6431a70cae7797500ef38953f599ca66 <<endpoint>><<static>> as "
+direct://unprocessedDocuments
+"
+
+queue endpoint_f2055eff1b6a68d35e0bea7c701f985f <<endpoint>><<static>> as "
+direct://ediSPSCommerce
+"
+
+endpoint_72b366233c6f4d3bfe813995333a68a3 --> route_e395004a37321c8f2227547f8a0dea23 : from
+
+endpoint_9048eaa6a7bc2f2ba55751be1d8f8c02 --> route_3f3d4f52491b0286146faa53704b2ae3 : from
+
+endpoint_20fac5d9f6ebf31503d2fd2d1d6a4750 --> route_4eab07afe4fd600cbddb625d9bfaf499 : from
+
+endpoint_55ce83167e13cb9bc1521e1aeb52ea9c --> route_59b588c76d893f7e975cf35c4bb4e6da : from
+
+endpoint_4c4bcdf6d99d3558b6f9a10f500301bd --> route_83610b04f622dc9ed7680dc265db3f85 : from
+
+endpoint_b9c2e4df258b0e5e62781695d5377baf --> route_ba8f3d67b637e40adf865c2da178f76b : from
+
+endpoint_b08815d918f441c938322d2261e29e2a --> route_e4757c463a0057a33e4570e94383eb00 : from
+
+endpoint_b0357e037288b350e16d176300009c44 --> route_c4ccfaa47eada53b810983f8eeeee071 : from
+
+endpoint_d9614dd38f9f479dc9ff9533f044f625 --> route_fd020b2ccb143fb1949a3df5f52565e7 : from
+
+endpoint_a96edba18759482884d68527c7d97542 --> route_24ae7f44bfb28723d464fd30e5e482d9 : from
+
+endpoint_fffa5e2108684ffa7316e1942feec703 --> route_2b9e46057823f17dcc656278b4f6a191 : from
+
+endpoint_c2eb9bab3db8dc0333c68dac53ee56b9 --> route_9ffd541b8ecff7971a4f78cbf6e8588e : from
+
+endpoint_b7aeb37ce54a3f1ffb967c39ec72556c --> route_ff1c868602881c1fcca9886ece16434a : from
+
+endpoint_6d06275d12e0b0d02eed878ee116921b --> route_307f0b16180b95eb265eebd7d22f1a92 : from
+
+endpoint_6442b864ffcf84ab6f9db265738c0d1a --> route_57a541bd4a955753e520e8663aef42df : from
+
+endpoint_7ca19ad6b067c5ad055a27f63c2b392f --> route_e62a8b506625bf0aa0ea8a42b843747b : from
+
+endpoint_f201263747fe28fa261bf8cf4433723e --> route_1dccf8387d12b0e314981807740d64aa : from
+
+endpoint_f05e3e3c7d17a988da1489a4ff49b900 --> route_546e87b50867ad09814809c227bf2521 : from
+
+endpoint_4e52422f76752187da3a891fff32c8c5 --> route_6e7da17886e65a737beb81d4f5f817e1 : from
+
+endpoint_056fb1a05132658d16e9b503fba4f480 --> route_7407c4864d3377bf5f70e2fb7a7de481 : from
+
+endpoint_a0d1c92b545e73211df3b296c4d16190 --> route_7cb9a567122d854c8f244538f8fbb129 : from
+
+endpoint_24aa36a342d8f50606106db5bf31d52e --> route_8ffb09d9d0145b378ea57016ba188cb3 : from
+
+endpoint_cb7d7b0d13504fdca5dd7dc17966dc72 --> route_945f4481dac06290dcc1f44ac637ce88 : from
+
+endpoint_e49f65d1c1a2d117588816654ea4d402 --> route_38142b8017b16df99bf7c8bc609e9e48 : from
+
+endpoint_57a57ee206358dc65f653f81da8259a4 --> route_af68104f8e97271c7d14f1b2dfda7b40 : from
+
+endpoint_f54c31de7881aa9a828e739394118e82 --> route_106127a33e57eef8f5cde7218b9555b0 : from
+
+endpoint_f6eea9cafd92f91beb31c57af090c0e9 --> route_6707ff615521f6d073c33badeeeb21a4 : from
+
+endpoint_554e3cbf862643626cb92ff43b6fb5f1 --> route_e87124ef65ed6c69c833c7fd9b257646 : from
+
+endpoint_0f2090b199deacf71ef011a14c158d82 --> route_9f5b1e298aa3ffa223ed6b8d939196bd : from
+
+endpoint_2033f424f20b0df03dae0290181d0990 --> route_6aed88d16bd11287248ec992cb278e96 : from
+
+endpoint_2fa42865eabd2779e3311251291565dd --> route_b8388ccbae4dd12a8bef2cf2cf16395a : from
+
+endpoint_a972b086c7b3403ca56acf93b3c547be --> route_58feb0d50a2b86dcf2a0ce5cb61ce409 : from
+
+endpoint_0993154a4bb837368a002dfb943c61ce --> route_fb49e61f1c649d8b19d2b9fbc0d01695 : from
+
+endpoint_6c80f38cc1a05b149eefc9cf4142b57c --> route_fe09b1cadb84632404bde4c4b9a0c3dc : from
+
+endpoint_0794576c41428e8996015a24f75e52c7 --> route_7c274f1486a045210cae7dd990c4b05c : from
+
+endpoint_5e9c31e8b224871497cebf63cf7b9ad1 --> route_7218d646af2620424310bcb7dd65da8a : from
+
+endpoint_b726e9bba2520e0fbb1d37dec6aa1fdf --> route_f3f2ec337919f808fd4c59bda1e9a3bd : from
+
+endpoint_e88ec68581eb3f3b2a1813035f7ba4a2 --> route_3f37c41571a9c955f4463686b7a33d2c : from
+
+endpoint_55b7b631fe8c64921048d52c0aa438e5 --> route_db4592cb7fc0b2341da6fd37a5bc5ca3 : from
+
+endpoint_11d282fbfe0bb64ac5f9d9609399416a --> route_f29044685192b1a0027938d1337b1241 : from
+
+endpoint_c2664ef6fbcbfa00a7ba3104b4810ee6 --> route_e7a9fd1e7179d3d7e2033c272b02d404 : from
+
+endpoint_6431a70cae7797500ef38953f599ca66 --> route_3e8135fbb875679f09ccc928520320e9 : from
+
+endpoint_9568bcbb1d59b31b63eaa9b926815c00 --> route_021cde70f3e272b0777a1a3b8cb4bb95 : from
+
+endpoint_d044bc50abad329442a82b3a7d8d84bf --> route_32e9db419106bf951e922be8cae40b44 : from
+
+endpoint_edc859f75912023d96a9024e12e9c326 --> route_f56b85fb447cb6688eb93ea4716f9d2a : from
+
+endpoint_49cca804a61a5e547cea2e24c03e62fa --> route_0a71cdd5d5e1060e98872b43c65791d6 : from
+
+endpoint_70c72afdad93c63acc74d4280172c9d3 --> route_3947ec4b3811796b744218772b1bce95 : from
+
+endpoint_62e0a6ada08f3c7d9eec6e3a42a20bba --> route_23217a82be8f43204a3e112179096725 : from
+
+endpoint_2637d7c7b8d5a6e4e3b63f8775c66527 --> route_745588f1323a4119f95da3363a39802d : from
+
+endpoint_365793d27b9b2690e8ce010550e25538 --> route_2c48246cc044333bb46d1b3e6aa67e8b : from
+
+endpoint_b90f5b075b622271d7f08557cdf1b12e --> route_8e8fc4532f79ebc62b842390d582bca4 : from
+
+endpoint_30aaf9d4b90d2e19b7f79a2f2d29c4df --> route_1bb34f27975bc154c52db3584d276735 : from
+
+endpoint_f7fa3ce406a9ca3106c0cf04ed4cef5f --> route_1dc1eab06be6bbf5afc2761815956972 : from
+
+endpoint_767394a4d0282317b2fea53fe8d96e5c --> route_dfaf29779dbc1ae4717bbd20486b0307 : from
+
+endpoint_b14f343e17e155f8b8ee9b2a996e88ea --> route_07d97c8c6d82c731b40dd523737e5124 : from
+
+endpoint_4269af557aa912a9a7976383d1f412bf --> route_fd9a65867ad5a8630755a66e395cac73 : from
+
+endpoint_1f11665bed9403206b6f337fa2d72aba --> route_fe99f323cd1d055c3bfd36ef07101990 : from
+
+endpoint_b8f599cfef9c0ad475509fe5b21cfbdd --> route_a9c1010a57ff35a73ca41eff1d42c5e3 : from
+
+endpoint_f9942d7236a76a1065309e575b18393e --> route_942eeb442d3b9d7adff650dca7132a42 : from
+
+endpoint_ce764b980edf062d833d24caa56e2090 --> route_f2adf6f219aaefd3ecd769b209def46e : from
+
+endpoint_69479c8df956a73d499cd9b7661d4777 --> route_c8c6d55303ae1a4cb2d30a23c22eb498 : from
+
+endpoint_8b242999ad23ebe51807273b5dff866a --> route_390c3185e8487708828de056a681f9b4 : from
+
+endpoint_4b2ef9c82df8f6969f4bebda9625081b --> route_19977bab271fd867ca3a0048c4eeea55 : from
+
+endpoint_f2055eff1b6a68d35e0bea7c701f985f --> route_827e5d67a93f37a5d315258ed683eb13 : from
+
+endpoint_1488d052d443a6b4de7be723e7bd1e1a --> route_f6528a0cf9bb109db1cf8f0f7d036567 : from
+
+endpoint_bb67337f15d93a9860294bf5a84b15b4 --> route_5f6c5a1d04c5821083ad1dbb2e5170ac : from
+
+endpoint_314e25e17e05cd60da8bff2748d697f1 --> route_314e25e17e05cd60da8bff2748d697f1 : from
+
+endpoint_e4fe72b82efd5739ae7b1e13b6c73a24 --> route_e4fe72b82efd5739ae7b1e13b6c73a24 : from
+
+endpoint_793202eaceb7676a7c35ff0dadb2891b --> route_793202eaceb7676a7c35ff0dadb2891b : from
+
+endpoint_dce15794ad920c576c3b85ace2468476 --> route_3dfb0010103d55df4bc22dd32220bee1 : from
+
+route_ba8f3d67b637e40adf865c2da178f76b --> endpoint_554e3cbf862643626cb92ff43b6fb5f1 : to
+
+route_e395004a37321c8f2227547f8a0dea23 --> endpoint_6d06275d12e0b0d02eed878ee116921b : to
+
+route_e395004a37321c8f2227547f8a0dea23 --> endpoint_55ce83167e13cb9bc1521e1aeb52ea9c : to
+
+route_4eab07afe4fd600cbddb625d9bfaf499 --> endpoint_b7aeb37ce54a3f1ffb967c39ec72556c : to
+
+route_3f3d4f52491b0286146faa53704b2ae3 --> endpoint_1488d052d443a6b4de7be723e7bd1e1a : to
+
+route_3f3d4f52491b0286146faa53704b2ae3 --> endpoint_f05e3e3c7d17a988da1489a4ff49b900 : to
+
+route_3f3d4f52491b0286146faa53704b2ae3 --> endpoint_4e52422f76752187da3a891fff32c8c5 : to
+
+route_3f3d4f52491b0286146faa53704b2ae3 --> endpoint_fffa5e2108684ffa7316e1942feec703 : to
+
+route_3f3d4f52491b0286146faa53704b2ae3 --> endpoint_d9614dd38f9f479dc9ff9533f044f625 : to
+
+route_59b588c76d893f7e975cf35c4bb4e6da --> endpoint_20fac5d9f6ebf31503d2fd2d1d6a4750 : to
+
+route_59b588c76d893f7e975cf35c4bb4e6da --> endpoint_9048eaa6a7bc2f2ba55751be1d8f8c02 : to
+
+route_59b588c76d893f7e975cf35c4bb4e6da --> endpoint_fffa5e2108684ffa7316e1942feec703 : to
+
+route_59b588c76d893f7e975cf35c4bb4e6da --> endpoint_b08815d918f441c938322d2261e29e2a : to
+
+route_307f0b16180b95eb265eebd7d22f1a92 --> endpoint_554e3cbf862643626cb92ff43b6fb5f1 : to
+
+route_307f0b16180b95eb265eebd7d22f1a92 --> endpoint_f54c31de7881aa9a828e739394118e82 : to
+
+route_307f0b16180b95eb265eebd7d22f1a92 --> endpoint_6442b864ffcf84ab6f9db265738c0d1a : to
+
+route_307f0b16180b95eb265eebd7d22f1a92 --> endpoint_f201263747fe28fa261bf8cf4433723e : to
+
+route_307f0b16180b95eb265eebd7d22f1a92 --> endpoint_c2eb9bab3db8dc0333c68dac53ee56b9 : to
+
+route_307f0b16180b95eb265eebd7d22f1a92 --> endpoint_a0d1c92b545e73211df3b296c4d16190 : to
+
+route_ba8f3d67b637e40adf865c2da178f76b --> endpoint_f54c31de7881aa9a828e739394118e82 : to
+
+route_307f0b16180b95eb265eebd7d22f1a92 --> endpoint_7ca19ad6b067c5ad055a27f63c2b392f : to
+
+route_af68104f8e97271c7d14f1b2dfda7b40 --> endpoint_1488d052d443a6b4de7be723e7bd1e1a : to
+
+route_e87124ef65ed6c69c833c7fd9b257646 --> endpoint_f6eea9cafd92f91beb31c57af090c0e9 : to
+
+route_8e8fc4532f79ebc62b842390d582bca4 --> endpoint_a466d7385804fe6615379e53492cdc74 : to
+
+route_19977bab271fd867ca3a0048c4eeea55 --> endpoint_9e2982095eb15f51861ae913400ff69c : to
+
+route_827e5d67a93f37a5d315258ed683eb13 --> endpoint_3b233c1e511ce99547a1aadc5c15088f : to
+
+route_fe09b1cadb84632404bde4c4b9a0c3dc --> endpoint_f54c31de7881aa9a828e739394118e82 : to
+
+route_fe09b1cadb84632404bde4c4b9a0c3dc --> endpoint_0993154a4bb837368a002dfb943c61ce : to
+
+route_e7a9fd1e7179d3d7e2033c272b02d404 --> endpoint_0993154a4bb837368a002dfb943c61ce : to
+
+route_fb49e61f1c649d8b19d2b9fbc0d01695 --> endpoint_b9c2e4df258b0e5e62781695d5377baf : to
+
+route_021cde70f3e272b0777a1a3b8cb4bb95 --> endpoint_b9c2e4df258b0e5e62781695d5377baf : to
+
+route_3e8135fbb875679f09ccc928520320e9 --> endpoint_55b7b631fe8c64921048d52c0aa438e5 : to
+
+route_3e8135fbb875679f09ccc928520320e9 --> endpoint_b726e9bba2520e0fbb1d37dec6aa1fdf : to
+
+route_3e8135fbb875679f09ccc928520320e9 --> endpoint_b9c2e4df258b0e5e62781695d5377baf : to
+
+route_3e8135fbb875679f09ccc928520320e9 --> endpoint_49cca804a61a5e547cea2e24c03e62fa : to
+
+route_9f5b1e298aa3ffa223ed6b8d939196bd --> endpoint_72b366233c6f4d3bfe813995333a68a3 : to
+
+route_9f5b1e298aa3ffa223ed6b8d939196bd --> endpoint_20fac5d9f6ebf31503d2fd2d1d6a4750 : to
+
+route_9f5b1e298aa3ffa223ed6b8d939196bd --> endpoint_9048eaa6a7bc2f2ba55751be1d8f8c02 : to
+
+route_f3f2ec337919f808fd4c59bda1e9a3bd --> endpoint_72b366233c6f4d3bfe813995333a68a3 : to
+
+route_f3f2ec337919f808fd4c59bda1e9a3bd --> endpoint_fffa5e2108684ffa7316e1942feec703 : to
+
+route_ba8f3d67b637e40adf865c2da178f76b --> endpoint_72b366233c6f4d3bfe813995333a68a3 : to
+
+route_f3f2ec337919f808fd4c59bda1e9a3bd --> endpoint_b0357e037288b350e16d176300009c44 : to
+
+route_db4592cb7fc0b2341da6fd37a5bc5ca3 --> endpoint_72b366233c6f4d3bfe813995333a68a3 : to
+
+route_f29044685192b1a0027938d1337b1241 --> endpoint_4e52422f76752187da3a891fff32c8c5 : to
+
+route_7218d646af2620424310bcb7dd65da8a --> endpoint_72b366233c6f4d3bfe813995333a68a3 : to
+
+route_7218d646af2620424310bcb7dd65da8a --> endpoint_20fac5d9f6ebf31503d2fd2d1d6a4750 : to
+
+route_58feb0d50a2b86dcf2a0ce5cb61ce409 --> endpoint_72b366233c6f4d3bfe813995333a68a3 : to
+
+route_58feb0d50a2b86dcf2a0ce5cb61ce409 --> endpoint_4b2ef9c82df8f6969f4bebda9625081b : to
+
+route_6aed88d16bd11287248ec992cb278e96 --> endpoint_be0ab7c9e14729d09469c65286a49659 : to
+
+route_3dfb0010103d55df4bc22dd32220bee1 --> endpoint_f6eea9cafd92f91beb31c57af090c0e9 : to
+
+route_ba8f3d67b637e40adf865c2da178f76b --> endpoint_20fac5d9f6ebf31503d2fd2d1d6a4750 : to
+
+route_f6528a0cf9bb109db1cf8f0f7d036567 --> endpoint_2637d7c7b8d5a6e4e3b63f8775c66527 : to
+
+route_0a71cdd5d5e1060e98872b43c65791d6 --> endpoint_9156e68859543829f9e8db3b0277d0a4 : to
+
+route_0a71cdd5d5e1060e98872b43c65791d6 --> endpoint_f6eea9cafd92f91beb31c57af090c0e9 : to
+
+route_0a71cdd5d5e1060e98872b43c65791d6 --> endpoint_f54c31de7881aa9a828e739394118e82 : to
+
+route_0a71cdd5d5e1060e98872b43c65791d6 --> endpoint_70c72afdad93c63acc74d4280172c9d3 : to
+
+route_0a71cdd5d5e1060e98872b43c65791d6 --> endpoint_62e0a6ada08f3c7d9eec6e3a42a20bba : to
+
+route_0a71cdd5d5e1060e98872b43c65791d6 --> endpoint_4b2ef9c82df8f6969f4bebda9625081b : to
+
+route_0a71cdd5d5e1060e98872b43c65791d6 --> endpoint_f2055eff1b6a68d35e0bea7c701f985f : to
+
+route_ba8f3d67b637e40adf865c2da178f76b --> endpoint_9048eaa6a7bc2f2ba55751be1d8f8c02 : to
+
+route_0a71cdd5d5e1060e98872b43c65791d6 --> endpoint_fffa5e2108684ffa7316e1942feec703 : to
+
+route_0a71cdd5d5e1060e98872b43c65791d6 --> endpoint_edc859f75912023d96a9024e12e9c326 : to
+
+route_23217a82be8f43204a3e112179096725 --> endpoint_bb67337f15d93a9860294bf5a84b15b4 : to
+
+route_f56b85fb447cb6688eb93ea4716f9d2a --> endpoint_70c72afdad93c63acc74d4280172c9d3 : to
+
+route_f56b85fb447cb6688eb93ea4716f9d2a --> endpoint_dce15794ad920c576c3b85ace2468476 : to
+
+route_f56b85fb447cb6688eb93ea4716f9d2a --> endpoint_62e0a6ada08f3c7d9eec6e3a42a20bba : to
+
+route_793202eaceb7676a7c35ff0dadb2891b --> endpoint_d044bc50abad329442a82b3a7d8d84bf : to
+
+route_e4fe72b82efd5739ae7b1e13b6c73a24 --> endpoint_9568bcbb1d59b31b63eaa9b926815c00 : to
+
+route_314e25e17e05cd60da8bff2748d697f1 --> endpoint_6431a70cae7797500ef38953f599ca66 : to
+
+route_fd9a65867ad5a8630755a66e395cac73 --> endpoint_b8f599cfef9c0ad475509fe5b21cfbdd : to
+
+route_e395004a37321c8f2227547f8a0dea23 --> endpoint_4c4bcdf6d99d3558b6f9a10f500301bd : to
+
+route_a9c1010a57ff35a73ca41eff1d42c5e3 --> endpoint_1f11665bed9403206b6f337fa2d72aba : to
+
+route_fe99f323cd1d055c3bfd36ef07101990 --> endpoint_f9942d7236a76a1065309e575b18393e : to
+
+route_fe99f323cd1d055c3bfd36ef07101990 --> endpoint_767394a4d0282317b2fea53fe8d96e5c : to
+
+route_942eeb442d3b9d7adff650dca7132a42 --> endpoint_70c72afdad93c63acc74d4280172c9d3 : to
+
+route_1dc1eab06be6bbf5afc2761815956972 --> endpoint_ce764b980edf062d833d24caa56e2090 : to
+
+route_1dc1eab06be6bbf5afc2761815956972 --> endpoint_767394a4d0282317b2fea53fe8d96e5c : to
+
+route_1dc1eab06be6bbf5afc2761815956972 --> endpoint_30aaf9d4b90d2e19b7f79a2f2d29c4df : to
+
+route_1bb34f27975bc154c52db3584d276735 --> endpoint_b14f343e17e155f8b8ee9b2a996e88ea : to
+
+route_e395004a37321c8f2227547f8a0dea23 --> endpoint_a96edba18759482884d68527c7d97542 : to
+
+route_1bb34f27975bc154c52db3584d276735 --> endpoint_69479c8df956a73d499cd9b7661d4777 : to
+
+route_c8c6d55303ae1a4cb2d30a23c22eb498 --> endpoint_72b366233c6f4d3bfe813995333a68a3 : to
+
+route_c8c6d55303ae1a4cb2d30a23c22eb498 --> endpoint_20fac5d9f6ebf31503d2fd2d1d6a4750 : to
+
+route_c8c6d55303ae1a4cb2d30a23c22eb498 --> endpoint_8b242999ad23ebe51807273b5dff866a : to
+
+@enduml

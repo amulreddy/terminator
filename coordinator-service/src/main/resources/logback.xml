@@ -1,0 +1,26 @@
+<configuration>
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>%d{MM/dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} %X{orderId} - %msg%n
+			</pattern>
+		</layout> 
+		<target>System.out</target>
+	</appender>
+	<appender name="SaveMoaOrder" class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>%d{MM/dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} Customer Number %X{customerNumber} - %msg%n
+			</pattern>
+		</layout> 
+		<target>System.out</target>
+	</appender>
+	
+	<logger name="com.autowares" level="info" />
+	<logger name="org.optaplanner" level="warn" />
+	<logger name="org.springframework.ws.soap" level="warn"/>
+	<logger name="com.autowares.mongoose.camel.processors.SaveMoaOrder" additivity="false" >
+			<appender-ref ref="SaveMoaOrder" />
+	</logger>
+	<root level="info">
+		<appender-ref ref="STDOUT" />
+	</root>
+</configuration>

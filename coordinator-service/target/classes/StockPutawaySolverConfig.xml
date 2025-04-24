@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<solver xmlns="https://www.optaplanner.org/xsd/solver"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="https://www.optaplanner.org/xsd/solver https://www.optaplanner.org/xsd/solver/solver.xsd">
+	<!-- Domain model configuration -->
+	<solutionClass>com.autowares.mongoose.optaplanner.domain.StockPutawayOptimization</solutionClass>
+	<entityClass>com.autowares.mongoose.optaplanner.domain.StockPutawayDetail</entityClass>
+
+	<!-- Score configuration -->
+	<scoreDirectorFactory>
+		<constraintProviderClass>com.autowares.mongoose.optaplanner.constraints.StockPutawayConstraintProvider</constraintProviderClass>
+		<constraintStreamImplType>DROOLS</constraintStreamImplType>
+	</scoreDirectorFactory>
+
+	<!-- Optimization algorithms configuration -->
+	<constructionHeuristic>
+		<constructionHeuristicType>FIRST_FIT</constructionHeuristicType>
+	</constructionHeuristic>
+	<localSearch>
+		<termination>
+		<terminationCompositionStyle>AND</terminationCompositionStyle>
+			<unimprovedMillisecondsSpentLimit>250</unimprovedMillisecondsSpentLimit>
+		</termination>
+		<localSearchType>LATE_ACCEPTANCE</localSearchType>
+	</localSearch>
+
+</solver>

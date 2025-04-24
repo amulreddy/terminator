@@ -1,0 +1,16 @@
+com\autowares\mongoose\exception\LockedDocumentException.class
+com\autowares\mongoose\optaplanner\domain\OrderFillDetail.class
+com\autowares\mongoose\optaplanner\domain\OrderDetailFulfillment.class
+com\autowares\mongoose\optaplanner\domain\StockPutawayOptimization.class
+com\autowares\mongoose\exception\RetryLaterException.class
+com\autowares\mongoose\exception\AbortProcessingException.class
+com\autowares\mongoose\optaplanner\domain\FulfillmentLocationStrengthComparator.class
+com\autowares\mongoose\client\DummyClient.class
+com\autowares\mongoose\client\CoordinatorClient.class
+com\autowares\mongoose\optaplanner\domain\FulfillmentLocation.class
+com\autowares\mongoose\optaplanner\domain\OrderDetail.class
+com\autowares\mongoose\optaplanner\domain\StockDetail.class
+com\autowares\mongoose\exception\UnimplementedException.class
+com\autowares\mongoose\exception\ContinueProcessingException.class
+com\autowares\mongoose\optaplanner\domain\StockPutawayDetail.class
+com\autowares\mongoose\optaplanner\domain\StockingLocation.class
